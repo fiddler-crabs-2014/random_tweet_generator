@@ -6,7 +6,7 @@ module TwitterClient
   def prevent_rate_limiting
     max_attempts = 3
     num_attempts = 0
-    follower_ids = @client.follower_ids
+    follower_ids = client.follower_ids
     begin
       num_attempts += 1
       follower_ids.to_a
@@ -23,13 +23,13 @@ module TwitterClient
   end
 
   def self.create_client
-    @client = Twitter::REST::Client.new do |config|
+    client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['API_KEY']
       config.consumer_secret     = ENV['API_SECRET']
       config.access_token        = ENV['ACCESS_TOKEN']
       config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
     end
-    @client
+    client
   end
 
   def self.get_recent_tweets(user)
@@ -40,7 +40,7 @@ module TwitterClient
 end
 
 #Driver / Testing Code:
-
+TwitterClient.get_recent_tweets('buckoleary')
 # p instance.get_recent_tweets('buckoleary')
 
 # tweet_array =[]
