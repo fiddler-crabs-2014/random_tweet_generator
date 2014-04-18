@@ -32,24 +32,25 @@ module TwitterClient
     client
   end
 
-  def self.get_recent_tweets(user)
+  def self.get_last_20_tweets(user)
     client = TwitterClient.create_client
-    client.user_timeline(user, &:prevent_rate_limiting)
+    client.user_timeline(user)
   end
 
 end
 
 #Driver / Testing Code:
-TwitterClient.get_recent_tweets('buckoleary')
-# p instance.get_recent_tweets('buckoleary')
+p TwitterClient.get_last_20_tweets('officialjaden')
 
+#basic code to pull tweets from text
 # tweet_array =[]
-# bucks_timeline = @client.user_timeline('buckoleary')
+# bucks_timeline = @client.user_timeline('officialjaden')
 # bucks_timeline.each do |tweet|
 #   tweet_array << tweet.text
 # end
 
 # p tweet_array
 
+#print one tweet
 #tweet = client.status(456957468300414976)
 #puts tweet.methods
