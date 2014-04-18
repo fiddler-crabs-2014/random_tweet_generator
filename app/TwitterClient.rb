@@ -47,8 +47,11 @@ twitter_handle = ARGV[0]
 tweets = TwitterClient.get_last_20_tweets(twitter_handle)
 tweets = Tweet.new(tweets)
 tweets.convert_tweets_to_array_of_strings
-tweets.determine_parts_of_speech
-p tweets.compose_sentence
+tweets.original_array
+tweets.strip_usernames
+p tweets.map_counts(tweets.unique_words(tweets.baaos))
+# tweets.determine_parts_of_speech
+# p tweets.compose_sentence
 # tweets.compose_sentence
 # basic code to pull tweets from text
 # tweet_array =[]

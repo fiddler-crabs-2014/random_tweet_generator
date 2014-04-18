@@ -8,13 +8,40 @@ class Tweet
     @nouns = []
     @verbs = []
     @adjectives = []
+    @string = ''
   end
 
-# self. method
+  def original_array
+    array = []
+    @string = @array_of_tweets.join(" ")
+  end
+
   def convert_tweets_to_array_of_strings
     @tweets.each do |tweet|
       @array_of_tweets << tweet.text
     end
+    @array_of_tweets
+  end
+
+  def strip_usernames
+    # p @string
+    @string.gsub!(/[",.\\\n?!]/, '')
+  end
+
+  def baaos
+    @string.split(" ")
+  end
+
+  def unique_words(tweets)
+    p tweets.uniq
+  end
+
+  def map_counts(array)
+    counts = {}
+    array.each do |word|
+      counts[word.to_sym] = baaos.count(word)
+    end
+    p counts
   end
 
   def self.word_frequency
